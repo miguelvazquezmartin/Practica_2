@@ -1,5 +1,11 @@
 package es.studium.practica_2;
 
+/**
+ * Clase TestBanco donde se gestiona la información de las clases Cliente y Cuenta para mostrarla 
+ * @author miguel
+ *@version 2021
+ */
+
 public class TestBanco {
 	
 	public static void main(String[] args) {
@@ -16,20 +22,15 @@ public class TestBanco {
 		Cuenta cuentaBeatriz = new Cuenta(62342, 100, beatriz);
 
 		/* Antonio y Beatriz consultan el saldo */
-		System.out.println(texto + cuentaAntonio.getCliente().getNombre() + " tiene "
-				+ cuentaAntonio.getSaldo() + " " + moneda);
-		System.out.println(texto + cuentaBeatriz.getCliente().getNombre() + " tiene "
-				+ cuentaBeatriz.getSaldo() + " " + moneda);
+		movimiento(texto, moneda, cuentaAntonio);
+		movimiento(texto, moneda, cuentaBeatriz);
 
 		/* Beatriz transfiere 50€ a Antonio */
 		cuentaBeatriz.setSaldo(cuentaBeatriz.getSaldo() - 50);
 		cuentaAntonio.setSaldo(cuentaAntonio.getSaldo() + 50);
 
-		/* Antonio y Beatriz vuelven a consultar para comprobar que todo ha ido bien */
-		System.out.println(texto + cuentaAntonio.getCliente().getNombre() + " tiene "
-				+ cuentaAntonio.getSaldo() + " " + moneda);
-		System.out.println(texto + cuentaBeatriz.getCliente().getNombre() + " tiene "
-				+ cuentaBeatriz.getSaldo() + " " + moneda);
+		movimiento(texto, moneda, cuentaAntonio);
+		movimiento(texto, moneda, cuentaBeatriz);
 
 		/* Antonio gana 100€ en una rifa y hace un ingreso en su cuenta */
 		cuentaAntonio.setSaldo(cuentaAntonio.getSaldo() + 100);
@@ -43,11 +44,14 @@ public class TestBanco {
 		cuentaAntonio.setSaldo(cuentaAntonio.getSaldo() - 50);
 		cuentaBeatriz.setSaldo(cuentaBeatriz.getSaldo() + 50);
 		
-		/*Antonio y Beatriz consultan por última vez la cuenta del banco, después de los últimos movimientos*/
+		movimiento(texto, moneda, cuentaAntonio);
+		movimiento(texto, moneda, cuentaBeatriz);
+	}
+
+	private static void movimiento(String texto, String moneda, Cuenta cuentaAntonio)
+	{
 		System.out.println(texto + cuentaAntonio.getCliente().getNombre() + " tiene "
 				+ cuentaAntonio.getSaldo() + " " + moneda);
-		System.out.println(texto + cuentaBeatriz.getCliente().getNombre() + " tiene "
-				+ cuentaBeatriz.getSaldo() + " " + moneda);
 	}
 	
 }
