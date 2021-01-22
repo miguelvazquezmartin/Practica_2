@@ -44,4 +44,5 @@ public class TestBanco {
 		System.out.println("La cuenta de " + cuentaBeatriz.getCliente().getNombre() + " tiene "
 				+ cuentaBeatriz.getSaldo() + " euros.");
 	}
+	
 }
